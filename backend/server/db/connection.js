@@ -1,5 +1,4 @@
 const { MongoClient } = require("mongodb");
-const Db = process.env.ATLAS_URI;
 const client = new MongoClient('mongodb+srv://Nikikosa:devTeamAltF4@chatapp.hdxcr.mongodb.net/ChatApp?retryWrites=true&w=majority')
  
 var _db;
