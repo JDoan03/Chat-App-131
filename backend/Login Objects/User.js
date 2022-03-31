@@ -25,37 +25,27 @@ class User{
     /**
      * Getter for the username field value.
      */
-    get UserName(){
-        return this.#username;
-    }
+    get UserName(){ return this.#username; }
 
     /**
      * Getter for the password field value.
      */
-    get Password(){
-        return this.#password;
-    }
+    get Password(){ return this.#password; }
 
     /**
      * Getter for the key field value.
      */
-    get key(){
-        return this.#key;
-    }
+    get key(){ return this.#key; }
 
     /**
      * Setter for the username field value.
      */
-    set UserName(username){
-        this.#username = username;
-    }
+    set UserName(username){ this.#username = username; }
 
     /**
      * Setter for the password field value.
      */
-    set password(password){
-        this.#password = password;
-    }
+    set password(password){ this.#password = password; }
 
     
     /**
@@ -64,14 +54,10 @@ class User{
      * @param {*} pass 
      * @returns 
      */
-    Login(user,pass){
-        return (username == user && password == pass) ? true : false;
-    }
+    Login(user,pass){ return (username == user && password == pass) ? true : false; }
 
     /**
      * will upload user's data to database, need to add password encryption and decryption.
      */
-    Upload(){
-        
-    }
+    Upload(){ }
 }
