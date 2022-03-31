@@ -1,6 +1,6 @@
 const { MongoClient } = require("mongodb");
 const Db = process.env.ATLAS_URI;
-const client = new MongoClient('mongodb+srv://Nikikosa:<devTeamAltF4>@cluster0.hdxcr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+const client = new MongoClient('mongodb+srv://Nikikosa:devTeamAltF4@chatapp.hdxcr.mongodb.net/ChatApp?retryWrites=true&w=majority')
  
 var _db;
  
@@ -10,7 +10,7 @@ module.exports = {
       // Verify we got a good "db" object
       if (db)
       {
-        _db = db.db("Users");
+        _db = db.db("employees");
         console.log("Successfully connected to MongoDB."); 
       }
       return callback(err);
@@ -22,6 +22,7 @@ module.exports = {
   },
 }; 
 
+/*
 async function start(){
   await client.connect()
   console.log("Connected")
@@ -31,4 +32,4 @@ async function start(){
 }
 
   start()
-
+  */
