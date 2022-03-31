@@ -1,9 +1,6 @@
 const { MongoClient } = require("mongodb");
 const Db = process.env.ATLAS_URI;
-const client = new MongoClient(Db, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const client = new MongoClient('mongodb+srv://Nikikosa:<devTeamAltF4>@cluster0.hdxcr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
  
 var _db;
  
@@ -23,4 +20,15 @@ module.exports = {
   getDb: function () {
     return _db;
   },
-};
+}; 
+
+async function start(){
+  await client.connect()
+  console.log("Connected")
+  module.exports = client.db()
+  const app = require('./app')
+  app.listen(3000)
+}
+
+  start()
+
