@@ -1,6 +1,22 @@
 import React, { Component } from "react";
 import logo from './cutie.PNG';
 import './App.css';
+//import Create from "../backend/components/createUser";  
+//import { Route, Routes } from "react-router-dom";
+//const userRoutes = require('../backend/server/routes/user.js');
+/* 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:3000', {useNewUrlParser: true});
+var conn = mongoose.connection;
+conn.on('connected', function() {
+    console.log('database is connected successfully');
+});
+conn.on('disconnected',function(){
+    console.log('database is disconnected successfully');
+})
+conn.on('error', console.error.bind(console, 'connection error:'));
+module.exports = conn;
+*/
 
 class App extends Component {
   handleSubmit = e => {
@@ -13,7 +29,9 @@ class App extends Component {
       alert("Valid email is required");
     } else if (!e.target.password.value) {
       alert("Password is required");
-    } else if (
+    } else if ( 
+
+
       e.target.email.value === "me@example.com" &&
       e.target.password.value === "123456"
     ) {
@@ -27,6 +45,7 @@ class App extends Component {
 
   handleClick = e => {
     e.preventDefault();
+
 
     alert("Goes to registration page");
   };

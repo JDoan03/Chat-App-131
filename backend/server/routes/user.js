@@ -40,9 +40,9 @@ userRoutes.route("/user/:id").get(function (req, res) {
 userRoutes.route("/user/add").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myobj = {
-    name: req.body.name,
-    position: req.body.position,
-    level: req.body.level,
+    username: req.body.name,
+    password: req.body.position,
+    key: req.body.level,
   };
   db_connect.collection("users").insertOne(myobj, function (err, res) {
     if (err) throw err;
