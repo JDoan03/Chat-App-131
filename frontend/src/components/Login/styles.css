@@ -1,0 +1,21 @@
+@import url();
+
+:root {
+  --my-light-grey: #36393F;
+  --my-dark-grey: #2F3136;
+  --my-primary-blue: #00A2E3;
+}
+
+img {
+  size: 100%;
+}
+
+/* Tablets and under */
+@media(max-width: 768px) {
+  
+}
+
+/* Mobile */
+@media(max-width: 768px) {
+  
+}
