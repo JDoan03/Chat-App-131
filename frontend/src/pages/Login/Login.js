@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../../cutie.PNG";
+import createAccount from "../CreateAccount/createAccount";
 import "./styles.css";
 
 const initialState = {
@@ -66,7 +67,10 @@ export default class App extends React.Component {
 
   render() {
     return (
+      
+      
       <div className="Login">
+        <a href="../Login"></a>
         <form onSubmit={this.handleSubmit}>
           <div className="loginForm">
             <div className="inputFields">
@@ -111,7 +115,7 @@ export default class App extends React.Component {
               Submit
             </button>
             <button type="createAccount" id="createAccount">
-              <a href="../CreateAccount/createAccount.html">Create Account</a>
+              <a href="../CreateAccount">Create Account</a>
             </button>
           </div>
         </form>
@@ -119,3 +123,5 @@ export default class App extends React.Component {
     );
   }
 }
+
+
