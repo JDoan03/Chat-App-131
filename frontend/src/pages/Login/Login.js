@@ -1,6 +1,6 @@
 import React from "react";
-import logo from '../../cutie.PNG';
-import './styles.css';
+import logo from "../../cutie.PNG";
+import "./styles.css";
 
 const initialState = {
   email: "",
@@ -9,7 +9,7 @@ const initialState = {
   passwordError: "",
 };
 
-//import Create from "../backend/components/createUser";  
+//import Create from "../backend/components/createUser";
 //import { Route, Routes } from "react-router-dom";
 //const userRoutes = require('../backend/server/routes/user.js');
 /* 
@@ -68,41 +68,53 @@ export default class App extends React.Component {
     return (
       <div className="Login">
         <form onSubmit={this.handleSubmit}>
-          <div>
-            Email<br></br>
-            <input
-              name="email"
-              type="text"
-              placeholder
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
-            <div style={{ fontSize: 12, color: "red" }}>
-              {this.state.emailError}
+          <div className="loginForm">
+            <div className="inputFields">
+              <h5>Email</h5>
+              <div>
+                <input
+                  className="emailInput"
+                  name="email"
+                  type="text"
+                  placeholder
+                  autoComplete="off"
+                  maxLength="999"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.emailError}
+              </div>
             </div>
-          </div>
-          <div>
-            Password<br></br>
-            <input
-              type="password"
-              name="password"
-              placeholder
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-            <div style={{ fontSize: 12, color: "red" }}>
-              {this.state.passwordError}
+            <div className="inputFields">
+              <h5>Password</h5>
+              <div>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.passwordError}
+              </div>
             </div>
+            <button id="forgotPasswordButton">
+              <div id="ForgotPassword">
+                Forgot your password?
+              </div>
+            </button>
+            <button type="submit" id="Submit">
+              Submit
+            </button>
+            <button type="createAccount" id="createAccount">
+              <a href="../CreateAccount/createAccount.html">Create Account</a>
+            </button>
           </div>
-          <button type="submit" id="Submit">
-            Submit
-          </button>
         </form>
-        <div>
-          <button type="createAccount" id="createAccount">
-            Create Account
-          </button>
-        </div>
       </div>
     );
   }
