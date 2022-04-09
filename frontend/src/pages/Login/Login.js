@@ -67,61 +67,63 @@ export default class App extends React.Component {
 
   render() {
     return (
-      
-      
-      <div className="Login">
-        <a href="../Login"></a>
-        <form onSubmit={this.handleSubmit}>
-          <div className="loginForm">
-            <div className="inputFields">
-              <h5>Email</h5>
-              <div>
-                <input
-                  className="emailInput"
-                  name="email"
-                  type="text"
-                  placeholder
-                  autoComplete="off"
-                  maxLength="999"
-                  value={this.state.email}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div style={{ fontSize: 12, color: "red" }}>
-                {this.state.emailError}
-              </div>
+      <div className="Login flex-container">
+        <form onSubmit={this.handleSubmit} className="flex-container">
+          {/* Email Input */}
+          <div className="inputFields emailInput">
+            <label type="email">Email</label>
+            <div>
+              <input
+                className="emailInput"
+                name="email"
+                type="text"
+                placeholder
+                autoComplete="off"
+                maxLength="999"
+                value={this.state.email}
+                onChange={this.handleChange}
+              />
             </div>
-            <div className="inputFields">
-              <h5>Password</h5>
-              <div>
-                <input
-                  type="password"
-                  name="password"
-                  placeholder
-                  value={this.state.password}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div style={{ fontSize: 12, color: "red" }}>
-                {this.state.passwordError}
-              </div>
+            {/* <div style={{ fontSize: 12, color: "red" }}>
+              {this.state.emailError}
+            </div> */}
+          </div>
+          {/* Password Input */}
+          <div className="inputFields passwordInput">
+            <label>Password</label>
+            <div>
+              <input
+                type="password"
+                name="password"
+                placeholder
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
             </div>
+            <div style={{ fontSize: 12, color: "red" }}>
+              {this.state.passwordError}
+            </div>
+          </div>
+          {/* Forgot Password Button */}
+         
             <button id="forgotPasswordButton">
-              <div id="ForgotPassword">
-                Forgot your password?
-              </div>
+              <div id="ForgotPassword">Forgot your password?</div>
             </button>
+         
+          {/* Sumbit Button */}
+          <>
             <button type="submit" id="Submit">
               Submit
             </button>
+        
+          {/* Create Account Button */}
+          
             <button type="createAccount" id="createAccount">
-              <a href="../CreateAccount">Create Account</a>
+              Create Account
             </button>
-          </div>
+         </>
         </form>
       </div>
     );
   }
 }
-
-
