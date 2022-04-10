@@ -1,12 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import './App.css';
 import Login from "./pages/Login/Login";
 
-class App extends Component {
-  state = {
-    visible: true
-  };
-
+class App extends React.Component {
   render() {
     return (
       <div className="App">

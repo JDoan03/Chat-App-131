@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import logo from "../../cutie.PNG";
 import createAccount from "../CreateAccount/createAccount";
 import "./styles.css";
