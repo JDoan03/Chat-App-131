@@ -1,12 +1,19 @@
 import React from "react";
+import { Outlet, Link } from "react-router-dom";
 import './App.css';
-import Login from "./pages/Login/Login";
+
 
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <Login />
+      <div>
+        <h1>App</h1>
+        <nav style={{ borderBottom: "solid 1px", paddingBottom: "1rem" }}>
+          <Link to="/about">About</Link> | {" "}
+          <Link to="/home">Home</Link> | {" "}
+          <Link to="/login">Login</Link>
+        </nav>
+        <Outlet />
       </div>
     );
   }
