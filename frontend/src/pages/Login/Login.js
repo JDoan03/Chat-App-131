@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import logo from "../../cutie.PNG";
 import createAccount from "../CreateAccount/createAccount";
+import { Outlet, Link } from "react-router-dom";
 import "./styles.css";
 
 const initialState = {
