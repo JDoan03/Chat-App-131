@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import logo from "../../cutie.PNG";
-import createAccount from "../CreateAccount/createAccount";
 import { Outlet, Link } from "react-router-dom";
 import "./styles.css";
 
@@ -11,24 +9,7 @@ const initialState = {
   passwordError: "",
 };
 
-//import Create from "../backend/components/createUser";
-//import { Route, Routes } from "react-router-dom";
-//const userRoutes = require('../backend/server/routes/user.js');
-/* 
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:3000', {useNewUrlParser: true});
-var conn = mongoose.connection;
-conn.on('connected', function() {
-    console.log('database is connected successfully');
-});
-conn.on('disconnected',function(){
-    console.log('database is disconnected successfully');
-})
-conn.on('error', console.error.bind(console, 'connection error:'));
-module.exports = conn;
-*/
-
-export default class App extends React.Component {
+export default class App extends React.Component{
   state = initialState;
 
   handleChange = (event) => {
@@ -106,24 +87,25 @@ export default class App extends React.Component {
             </div>
           </div>
           {/* Forgot Password Button */}
-         
-            <button id="forgotPasswordButton">
-              <div id="ForgotPassword">Forgot your password?</div>
-            </button>
-         
+
+          <button id="forgotPasswordButton">
+            <div id="ForgotPassword">Forgot your password?</div>
+          </button>
+
           {/* Sumbit Button */}
           <>
             <button type="submit" id="Submit">
               Submit
             </button>
-        
-          {/* Create Account Button */}
-          
+
+            {/* Create Account Button */}
+
             <button type="createAccount" id="createAccount">
-              Create Account
+              <Link to="/createAccount">Create Account</Link>
             </button>
-         </>
+          </>
         </form>
+        <Outlet/>
       </div>
     );
   }
