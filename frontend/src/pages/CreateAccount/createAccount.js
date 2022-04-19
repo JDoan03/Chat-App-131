@@ -57,10 +57,10 @@ export default class createAccount extends React.Component {
             </div>
           </div>
           <>
-          {/* Button not working yet */}
-            {/* <button type="createAccount" id="createAccount">
+          Button not working yet 
+            <button type="createAccount" id="createAccount">
               Create Account
-            </button> */}
+            </button>
           </>
         </form>
       </div>
