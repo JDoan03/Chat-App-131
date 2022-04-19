@@ -5,13 +5,32 @@ require("dotenv").config({ path: "./config.env" });
 const port = process.env.PORT || 3000
 app.use(cors());
 app.use(express.json());
-app.use(require("./routes/user"));
 const dbo = require("./db/connection");
 const bodyParser = require('body-parser'); 
 const { ok } = require("assert");
 const mongoose = require('mongoose'); 
 const User = require('./routes/user'); 
 const bcrypt = require('bcryptjs');
+//import routes from 'routes.js';
+
+const routes = (app) => {
+  //create route for login
+  app.route('/login')
+    //create get request
+    .get((req, res) =>
+    res.send('GET request successful!'))
+    //create post request
+    .post((req, res) =>
+    res.set('POST request successful!'));
+  // create a new route so you can get these login entries by their ID's
+  app.route('/login/:loginID')
+    //create put request
+    .put((req, res) =>
+    res.send('PUT request successful!'))
+    //create delete request
+    .delete((req, res) =>
+    res.send('DELETE request successful'))
+}
 
 mongoose.connect('mongodb://localhost:3000/login-db', { 
   //userNewUrlParser: true, 
@@ -19,7 +38,10 @@ mongoose.connect('mongodb://localhost:3000/login-db', {
   //useCreateIndex: true
 });
 
+//app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json())
+
+routes(app);
 
 app.post('api/register', async (req, res) =>{ 
   console.log(req.body)

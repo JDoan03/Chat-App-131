@@ -1,0 +1,136 @@
+@import url();
+
+:root {
+  --my-light-grey: #727479;
+  --my-dark-grey: #36393f;
+  --my-primary-blue: #00a2e3;
+  --font-primary: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: var(--my-light-grey);
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  user-select: none;
+  -moz-user-select:none;-webkit-user-select:none;
+}
+
+.flex-container {
+  display: flex;
+  /* height: auto;
+  flex-direction: column; */
+  /* background-color: var(--my-dark-grey); */
+  /* justify-content: center;
+  align-items: center; */
+}
+
+.CreateAccount {
+  position: absolute;
+  min-height: 600px;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+form {
+  background-color: var(--my-dark-grey);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+  border-radius: 4px;
+  box-shadow: 2px 4px 6px rgb(0 0 0 / 20%);
+  /* width: 480px;
+  height: 400px; */
+}
+
+label {
+  color: #b9bbbe;
+  margin-bottom: 8px;
+  font: Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+input {
+  position: relative;
+  padding: 10px;
+  height: 40px;
+  width: 45vh;
+  background-color: #202225;
+  border: 0px;
+  border-radius: 4px;
+  color: #CBCCCD;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+#forgotPasswordButton {
+  width: 100%;
+  padding: 0px 8px;
+  margin: 10px 0;
+  background: none;
+  border: none;
+  border-radius: 3px;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #0C94CA;
+}
+
+#forgotPasswordButton:hover {
+  text-decoration: underline;
+}
+
+#createAccount, #Submit {
+  border: 0;
+  color: #FFF;
+  background-color: var(--my-primary-blue);
+  width: 100%;
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+  line-height: 24px;
+  padding: 8px 24px;
+  margin: 10px 8px;
+  width: 100%;
+  transition: 0.3s;
+  border-radius: 4px;
+}
+
+#createAccount:hover, #Submit:hover {
+  background-color: #ea6c0b;
+}
+
+/* Tablets and Under */
+@media (max-width: 768px) {
+  
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+
+}
