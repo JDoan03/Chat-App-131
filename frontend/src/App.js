@@ -11,7 +11,8 @@ class App extends React.Component {
         <nav style={{ borderBottom: "solid 1px", paddingBottom: "1rem" }}>
           <Link to="/about">About</Link> | {" "}
           <Link to="/home">Home</Link> | {" "}
-          <Link to="/login">Login</Link>
+          <Link to="/login">Login</Link> | {" "}
+          <Link to="/ChatPage">ChatPage</Link>
         </nav>
         <Outlet />
       </div>
