@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 import "./styles.css";
 
@@ -9,7 +9,7 @@ const initialState = {
   passwordError: "",
 };
 
-export default class App extends React.Component{
+export default class App extends React.Component {
   state = initialState;
 
   handleChange = (event) => {
@@ -95,7 +95,7 @@ export default class App extends React.Component{
           {/* Sumbit Button */}
           <>
             <button type="submit" id="Submit">
-              Submit
+              <Link to="/welcomePage">Submit</Link>
             </button>
 
             {/* Create Account Button */}
@@ -105,7 +105,7 @@ export default class App extends React.Component{
             </button>
           </>
         </form>
-        <Outlet/>
+        <Outlet />
       </div>
     );
   }

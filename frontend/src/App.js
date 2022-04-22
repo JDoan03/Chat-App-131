@@ -13,7 +13,6 @@ class App extends React.Component {
           <Link to="/about">About</Link> | {" "}
           <Link to="/home">Home</Link> | {" "}
           <Link to="/login">Login</Link> | {" "}
-          <Link to="/ChatPage">ChatPage</Link>
           <Link to="/createAccount">Create Account</Link> |{" "}
         </nav>
         <Outlet />
