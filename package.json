@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "express-async-handler": "^1.2.0",
     "react": "^18.0.0",
     "router-dom": "^2.2.9"
   }

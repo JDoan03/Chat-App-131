@@ -1,34 +1,14 @@
-const { MongoClient } = require("mongodb");
-const client = new MongoClient('mongodb+srv://Nikikosa:devTeamAltF4@chatapp.hdxcr.mongodb.net/ChatApp?retryWrites=true&w=majority')
- 
-var _db;
- 
-module.exports = {
-  connectToServer: function (callback) {
-    client.connect(function (err, db) {
-      // Verify we got a good "db" object
-      if (db)
-      {
-        _db = db.db("users");
-        console.log("Successfully connected to MongoDB."); 
-      }
-      return callback(err);
-         });
-  },
- 
-  getDb: function () {
-    return _db;
-  },
-}; 
+const mongoose = require('mongoose')
 
-/*
-async function start(){
-  await client.connect()
-  console.log("Connected")
-  module.exports = client.db()
-  const app = require('./app')
-  app.listen(3000)
+const connectDB = async () => {
+    try {
+        const conn = await mongoose.connect(process.env.MONGO_URI)
+
+        console.log(`Mongo DB Connected: ${conn.connection.host}`);
+    } catch (error) {
+        console.log(error);
+        process.exit(1)
+    }
 }
 
-  start()
-  */
+module.exports = connectDB

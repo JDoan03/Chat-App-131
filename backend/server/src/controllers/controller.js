@@ -1,147 +1,67 @@
-import mongoose from 'mongoose';
-import { StudentSchema, TeacherSchema, AdminSchema } from '../models/model';
+const asyncHandler = require('express-async-handler')
+const { globalAgent } = require('http')
 
-const Student = mongoose.model('StudentLogin', StudentSchema);
-const Teacher = mongoose.model('TeacherLogin', TeacherSchema);
-const Admin = mongoose.model('AdminLogin',AdminSchema);
+const Student = require('../models/students')
 
-//Students
-export const addNewStudent = (req,res) => {
-  let newStudent = new Student(req.body);
-  newStudent.save((err, student) => {
-    if (err) {
-      res.send(err)
-    }
-    res.json(student)
+//@route GET /api/students
+const getStudent = asyncHandler(async (req, res) => {
+
+  const students = await Student.find()
+  res.status(200).json(students)
+})
+
+//@route POST /api/students
+const createStudent = asyncHandler(async (req, res) => {
+
+  if(!req.body.userName) {
+    res.status(400)
+    throw new Error('Please add a username field')
+  }
+
+  const student = await Student.create({
+    userName: req.body.userName,
+    password: req.body.password,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName
+  }) 
+
+  res.status(200).json(student)
+})
+
+//@route PUT /api/students/:id
+const updateStudent = asyncHandler(async (req, res) => {
+  const student = await Student.findById(req.params.id)
+
+  if(!student) {
+    res.status(400)
+    throw new Error('Student not found')
+  }
+
+  const updatedStudent = await Student.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
   })
-}
 
-export const getStudents = (req, res) => {
-  Student.find({}, (err, students) => {
-    if(err){
-      res.send(err)
-    }
-    res.json(students)
-  })
-}
+  res.status(200).json(updatedStudent)
+})
 
-export const getStudentWithID = (req, res) => {
-  Student.findById(req.params.studentID, (err, student) => {
-    if(err) {
-      res.send(err)
-    }
-    res.json(student)
-  })
-}
+//@route DELETE /api/students/:id
+const deleteStudent = asyncHandler(async (req, res) => {
+  const student = await Student.findById(req.params.id)
 
-export const updateStudent = (req, res) => {
-  Student.findOneAndUpdate({ _id: req.params.studentID }, req.body, { new: true, useFindAndModify: false }, (err, student) => {
-    if(err) {
-      req.send(err)
-    }
-    res.json(student)
-  })
-}
+  if(!student) {
+    res.status(400)
+    throw new Error('Student not found')
+  }
 
-export const deleteStudent = (req, res) => {
-  Student.deleteOne({ _id: req.params.studentID }, (err, student) => {
-    if(err){
-      req.send(err)
-    }
-    res.json({message: "Successfully deleted student"})
-  })
-}
+  await Student.deleteOne(student)
 
-//Teachers
-export const addNewTeacher = (req,res) => {
-  let newTeacher = new Teacher(req.body);
-  newTeacher.save((err, teacher) => {
-    if (err) {
-      res.send(err)
-    }
-    res.json(teacher)
-  })
-}
+  res.status(200).json(`Student ${req.params.id} deleted`)
+})
 
-export const getTeacher = (req, res) => {
-  Teacher.find({}, (err, teacher) => {
-    if(err){
-      res.send(err)
-    }
-    res.json(teacher)
-  })
-}
 
-export const getTeacherWithID = (req, res) => {
-  Teacher.findById(req.params.teacherID, (err, teacher) => {
-    if(err) {
-      res.send(err)
-    }
-    res.json(teacher)
-  })
-}
-
-export const updateTeacher = (req, res) => {
-  Teacher.findOneAndUpdate({ _id: req.params.teacherID }, req.body, { new: true, useFindAndModify: false }, (err, teacher) => {
-    if(err) {
-      req.send(err)
-    }
-    res.json(teacher)
-  })
-}
-
-export const deleteTeacher = (req, res) => {
-  Teacher.deleteOne({ _id: req.params.teacherID }, (err, teacher) => {
-    if(err){
-      req.send(err)
-    }
-    res.json({message: "Successfully deleted teacher"})
-  })
-}
-
-//Admin
-export const addNewAdmin = (req,res) => {
-  let newAdmin = new Admin(req.body);
-  newAdmin.save((err, admin) => {
-    if (err) {
-      res.send(err)
-    }
-    res.json(admin)
-  })
-}
-
-export const getAdmin = (req, res) => {
-  Admin.find({}, (err, admin) => {
-    if(err){
-      res.send(err)
-    }
-    res.json(admin)
-  })
-}
-
-export const getAdminWithID = (req, res) => {
-  Admin.findById(req.params.adminID, (err, admin) => {
-    if(err) {
-      res.send(err)
-    }
-    res.json(admin)
-  })
-}
-
-export const updateAdmin = (req, res) => {
-  Admin.findOneAndUpdate({ _id: req.params.adminID }, req.body, { new: true, useFindAndModify: false }, (err, admin) => {
-    if(err) {
-      req.send(err)
-    }
-    res.json(admin)
-  })
-}
-
-export const deleteAdmin = (req, res) => {
-  Admin.deleteOne({ _id: req.params.adminID }, (err, admin) => {
-    if(err){
-      req.send(err)
-    }
-    res.json({message: "Successfully deleted admin"})
-  })
+module.exports = {
+  getStudent,
+  createStudent,
+  updateStudent,
+  deleteStudent
 }
