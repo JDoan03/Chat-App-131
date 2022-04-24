@@ -1,9 +1,143 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+:root {
+  --my-light-grey: #727479;
+  --my-dark-grey: #36393f;
+  --my-primary-blue: #00a2e3;
+  --my-primary-orange: #ea6c0b;
+  --font-primary: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-body {
-  background-color: #fff;
+/******  LOGIN PAGE  ******/
+.login-container{
+  display: flex;
+  align-items: center;
+  height: calc(100vh - 70px);
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-top: 70px;
+  background-color: var(--my-light-grey);
+  background-image: none;
+  justify-content: center;
 }
+
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0, 20%);
+  transition: 0.3s;
+  height: 70%;
+  width: 400px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0, 35%);
+}
+
+/* Add some padding inside the card container */
+.login-container .container {
+  padding-left: 7%;
+  padding-right: 7%;
+  height: 100%;
+  background-color: var(--my-dark-grey);
+  border-radius: 4px
+}
+
+.login-container .container h1{
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+.login-container .container form{
+  display: flex;
+  height: 80%;
+  flex-direction: column;
+  justify-content: space-around;
+  align-self: center;
+}
+
+input[type="text"], input[type="password"]{
+  padding-left: 8px;
+  padding-right: 8px;
+  height: 40px;
+  border-radius: 5px;
+  border: .5px solid rgb(143, 143, 143);
+  font-size: 15px;
+  color: #CBCCCD;
+  background-color: #202225;
+}
+
+label{
+  display: flex;
+  flex-direction: column;
+  color: #b9bbbe;
+  margin-bottom: 8px;
+}
+
+.login-container button{
+  border: 0;
+  color: #FFF;
+  background-color: var(--my-primary-blue);
+  height: 40px;
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+  line-height: 24px;
+  padding: 8px 24px;
+  width: 100%;
+  transition: 0.3s;
+  border-radius: 4px;
+}
+
+.login-container button:hover{
+  background-color: var(--my-primary-orange);
+  cursor: pointer;
+}
+
+.login-container button:focus{
+  outline: none !important;
+}
+
+.spinner {
+  animation: spinner infinite .9s linear;
+  height: 90%;
+}
+
+.spinner:focus{
+  border:none;
+}
+
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.form-error{
+  color: #F42B4B;
+  text-align: center;
+}
+
+@media screen and (max-width: 700px){
+  .login-container{
+    justify-content: center;
+    background-image: none;
+  }
+  .card {
+    width: 80%;
+    align-self: center;
+  }
+  
+}
+
+@media screen and (max-width: 350px){
+  .card {
+    width: 100%;
+  }
+  
+}
+
+
+/******  LOGIN PAGE  ******/
