@@ -95,9 +95,7 @@ export default class App extends React.Component {
 
           {/* Sumbit Button */}
           <>
-            <button onClick={() => {
-              navigate("/welcomePage");
-            }} type="submit" id="Submit">
+            <button type="submit" id="Submit">
               Submit
             </button>
 
