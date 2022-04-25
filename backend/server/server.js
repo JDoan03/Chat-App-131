@@ -7,6 +7,7 @@ app.use(cors());
 app.use(express.json());
 const connectDB = require("./db/connection");
 const bodyParser = require('body-parser'); 
+const chatRoutes = require('./src/routes/chatRoutes');
 
 const {errorHandler} = require('./src/middleware/errorMiddleware')
 
@@ -17,6 +18,7 @@ app.use(bodyParser.json())
 
 app.use('/api/students', require('./src/routes/studentRoutes'))
 app.use('/api/teachers', require('./src/routes/teacherRoutes'))
+app.use('/api/chat', require('./src/routes/chatRoutes'))
 
 app.use(errorHandler)
 
