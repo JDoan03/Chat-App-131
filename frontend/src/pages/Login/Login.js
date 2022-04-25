@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Outlet, Link } from "react-router-dom";
+import React, { Component } from "react";
+import { useNavigate, Outlet, Link } from "react-router-dom";
 import "./styles.css";
 
 const initialState = {
@@ -48,6 +48,7 @@ export default class App extends React.Component {
   };
 
   render() {
+
     return (
       <div className="Login flex-container">
         <form onSubmit={this.handleSubmit} className="flex-container">
@@ -94,8 +95,10 @@ export default class App extends React.Component {
 
           {/* Sumbit Button */}
           <>
-            <button type="submit" id="Submit">
-              <Link to="/welcomePage">Submit</Link>
+            <button onClick={() => {
+              navigate("/welcomePage");
+            }} type="submit" id="Submit">
+              Submit
             </button>
 
             {/* Create Account Button */}
@@ -106,7 +109,7 @@ export default class App extends React.Component {
           </>
         </form>
         <Outlet />
-      </div>
+      </div >
     );
   }
 }
