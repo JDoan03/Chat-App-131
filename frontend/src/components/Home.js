@@ -3,8 +3,8 @@ import { AuthContext } from "../App";
 
 
 export const Home = () => {
-return (
-    <div className="home">Chat APp page. Login
+  return (
+    <div className="home">Chat APP page. Login
     </div>
   );
 };
