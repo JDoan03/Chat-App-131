@@ -14,7 +14,9 @@ connectDB()
 
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json())
-app.use('/api/students', require('./src/routes/routes'))
+
+app.use('/api/students', require('./src/routes/studentRoutes'))
+app.use('/api/teachers', require('./src/routes/teacherRoutes'))
 
 app.use(errorHandler)
 
