@@ -3,8 +3,6 @@ import * as ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css';
 import App from './App';
-import Home from "./pages/Home";
-import Login from "./pages/Login/Login.js";
 import CreateAccount from './pages/CreateAccount/createAccount.js';
 import reportWebVitals from './reportWebVitals';
 
@@ -13,8 +11,6 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<App />}>
         {/* Nested Routes leading to url */}
-        <Route path="home" element={<Home />} />
-        <Route path="login" element={<Login />} />
         <Route path="createAccount" element={<CreateAccount />} />
         <Route
           path="*"
