@@ -1,68 +1,14 @@
-import React, { Component } from "react";
 import "./App.css";
-import { Outlet, Link } from "react-router-dom";
-import Login from "./components/Login";
-import Home from "./components/Home";
-import Header from "./components/Header";
-import Routers from './Router/Router'
-
-export const AuthContext = React.createContext();
-
-const initialState = {
-  isAuthenticated: false,
-  user: null,
-  token: null,
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "LOGIN":
-      localStorage.setItem("user", JSON.stringify(action.payload.user));
-      localStorage.setItem("token", JSON.stringify(action.payload.token));
-      return {
-        ...state,
-        isAuthenticated: true,
-        user: action.payload.user,
-        token: action.payload.token,
-      };
-    case "LOGOUT":
-      localStorage.clear();
-      return {
-        ...state,
-        isAuthenticated: false,
-        user: null,
-      };
-    default:
-      return state;
-  }
-};
+import Homepage from "./Pages/Homepage";
+import { Route } from "react-router-dom";
+import Chatpage from "./Pages/Chatpage";
 
 function App() {
-  const [state, dispatch] = React.useReducer(reducer, initialState);
-
-  React.useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user") || null);
-    const token = JSON.parse(localStorage.getItem("token") || null);
-
-    if (user && token) {
-      dispatch({
-        type: "LOGIN",
-        payload: {
-          user,
-          token,
-        },
-      });
-    }
-  }, []);
   return (
-    <AuthContext.Provider
-      value={{
-        state,
-        dispatch,
-      }}
-    >
-      <div className="App">{!state.isAuthenticated ? <Login /> : <Home />}</div>
-    </AuthContext.Provider>
+    <div className="App">
+      <Route path="/" component={Homepage} exact />
+      <Route path="/chats" component={Chatpage} />
+    </div>
   );
 }
 
