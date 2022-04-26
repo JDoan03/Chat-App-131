@@ -1,6 +1,14 @@
 {
+  "scripts":{ 
+    "start": "nodemon backend/server/server.js", 
+    "app":" npm start --prefix frontend", 
+    "dev":"concurrently \"npm start\" \"npm run app\"" 
+  }, 
+
+
   "dependencies": {
     "express-async-handler": "^1.2.0",
+    "nodemon": "^2.0.15",
     "react": "^18.0.0",
     "router-dom": "^2.2.9"
   }
