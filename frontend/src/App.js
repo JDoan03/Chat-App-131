@@ -4,7 +4,7 @@ import { Outlet, Link } from "react-router-dom";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import Header from "./components/Header";
-import Routers from './Router/Router'
+
 
 export const AuthContext = React.createContext();
 

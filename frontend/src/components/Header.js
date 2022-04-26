@@ -8,15 +8,9 @@ export const Header = () => {
   return (
     <nav id="navigation">
       <h1 href="#" className="logo">
-        HOOKED
+        Chat App WOOO
       </h1>
-      <button
-        onClick={() =>
-          dispatch({
-            type: "LOGOUT"
-          })
-        }
-      >
+      <button onClick={() => dispatch({type: "LOGOUT"})}>
         {state.isAuthenticated && (
           <h1>Hi {state.user.firstName} (LOGOUT)</h1>
         )}
