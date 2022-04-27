@@ -15,8 +15,10 @@ import animationData from "../animations/typing.json";
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
-const ENDPOINT = "http://localhost:3000";
+var ENDPOINT = "http://localhost:3001";
 var socket, selectedChatCompare;
+
+ENDPOINT = "http://localhost:3000";
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const [messages, setMessages] = useState([]);

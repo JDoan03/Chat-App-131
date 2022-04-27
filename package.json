@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "start": "nodemon backend/server/server.js",
     "app": " npm start --prefix frontend",
-    "dev": "concurrently \"npm start\" \"npm run app\""
+    "start": "nodemon backend/server/server.js", 
+    "dev": "concurrently \"npm run app\" \"npm run start\""
   },
   "dependencies": {
     "concurrently": "^7.1.0",
