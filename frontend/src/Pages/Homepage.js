@@ -1,61 +1,56 @@
 import {
-  Box,
-  Container,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-  Text,
-} from "@chakra-ui/react";
-import { useEffect } from "react";
-import { useHistory } from "react-router";
-import Login from "../components/Authentication/Login";
-import Signup from "../components/Authentication/Signup";
+    Box,
+    Container,
+    Tab,
+    TabList,
+    TabPanel,
+    TabPanels,
+    Tabs,
+    Text,
+    LinkBox,
+    LinkOverlay,
+    Heading,
+    Button,
+    Fade,
+    Link
+  } from "@chakra-ui/react";
 
-function Homepage() {
-  const history = useHistory();
 
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("userInfo"));
+  
+  function Homepage() {
 
-    if (user) history.push("/chats");
-  }, [history]);
+    return (
+      <Container maxW="xl" centerContent>
+        <Box
+          d="flex"
+          justifyContent="center"
+          p={3}
+          bg="darkgrey"
+          w="100%"
+          m="40px 0 15px 0"
+          borderRadius="lg"
+          borderWidth="1px"
+        >
+          <Text fontSize="4xl" fontFamily="Work sans">
+            Welcome to ALT-F4's chat app! :)
+          </Text>
+        </Box>
+        
+        <Box bg="darkgrey" w="100%" p={4} borderRadius="lg" borderWidth="1px">
 
-  return (
-    <Container maxW="xl" centerContent>
-      <Box
-        d="flex"
-        justifyContent="center"
-        p={3}
-        bg="darkgrey"
-        w="100%"
-        m="40px 0 15px 0"
-        borderRadius="lg"
-        borderWidth="1px"
-      >
-        <Text fontSize="4xl" fontFamily="Work sans">
-          ALT-F4's Chat App
-        </Text>
-      </Box>
-      <Box bg="darkgrey" w="100%" p={4} borderRadius="lg" borderWidth="1px">
-        <Tabs isFitted variant="soft-rounded">
-          <TabList mb="1em">
-            <Tab>Login</Tab>
-            <Tab>Sign Up</Tab>
-          </TabList>
-          <TabPanels>
-            <TabPanel>
-              <Login />
-            </TabPanel>
-            <TabPanel>
-              <Signup />
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
-      </Box>
-    </Container>
-  );
-}
+        <Link href='/teacher' passHref>
+          <Button>Teacher</Button>
+        </Link>
 
-export default Homepage;
+        <Link href='/student' passHref>
+          <Button>Student</Button>
+        </Link>
+
+        </Box>
+      </Container>
+    );
+
+
+    }
+  
+  export default Homepage;

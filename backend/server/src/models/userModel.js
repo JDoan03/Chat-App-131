@@ -4,23 +4,28 @@ const bcrypt = require("bcryptjs");
 const userSchema = mongoose.Schema(
   {
     name: { type: "String", required: true },
-    email: { type: "String", unique: true, required: true },
-    password: { type: "String", required: true },
     isAdmin: {
       type: Boolean,
       required: true,
       default: false,
     },
+    email: { type: "String", unique: function() {return this.isAdmin === true}, required: function() {return this.isAdmin === true}},
+    password: { type: "String", required: function() {return this.isAdmin === true}},
   },
   { timestaps: true }
 );
 
+
 userSchema.methods.matchPassword = async function (enteredPassword) {
+
+  if (this.isAdmin === true) {
   return await bcrypt.compare(enteredPassword, this.password);
+  }
 };
 
+
 userSchema.pre("save", async function (next) {
-  if (!this.isModified) {
+  if (!this.isModified || this.isAdmin === false) {
     next();
   }
 

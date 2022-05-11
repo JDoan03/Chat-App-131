@@ -1,37 +1,46 @@
 const asyncHandler = require('express-async-handler')
-const { globalAgent } = require('http')
 
 const Student = require('../models/studentModel')
-const Teacher = require('../models/teacherModel')
-const { unsubscribe } = require('../routes/teacherRoutes')
+const User = require('../models/userModel')
+const generateToken = require("../config/generateToken");
 
-//@route GET /api/students
+//@route GET /api/student
 const getStudent = asyncHandler(async (req, res) => {
 
-  const students = await Student.find({teacher: req.teacher.id})
+  const students = await Student.find({teacher: req.user._id})
   res.status(200).json(students)
 })
 
-//@route POST /api/students
+//@route POST /api/student
 const createStudent = asyncHandler(async (req, res) => {
 
-  if(!req.body.username) {
+  if(!req.body.firstName || !req.body.lastName) {
     res.status(400)
-    throw new Error('Please add a username field')
+    throw new Error('Please enter a first and last name.')
   }
 
   const student = await Student.create({
-    username: req.body.username,
-    password: req.body.password,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    teacher: req.teacher.id
+    teacher: req.user._id
   }) 
 
-  res.status(200).json(student)
+  if (student) {
+    res.status(201).json({
+      _id: student._id,
+      firstName: student.firstName,
+      lastName: student.lastName,
+      teacher: student.teacher,
+      token: generateToken(student._id),
+    });
+  } else {
+    res.status(400);
+    throw new Error("Student not found");
+  }
+
 })
 
-//@route PUT /api/students/:id
+//@route PUT /api/student/:id
 const updateStudent = asyncHandler(async (req, res) => {
   const student = await Student.findById(req.params.id)
 
@@ -40,7 +49,7 @@ const updateStudent = asyncHandler(async (req, res) => {
     throw new Error('Student not found')
   }
 
-  const teacher = await Teacher.findById(req.teacher.id)
+  const teacher = await User.findById(req.user._id)
 
   if(!teacher) {
     res.status(401)
@@ -59,7 +68,7 @@ const updateStudent = asyncHandler(async (req, res) => {
   res.status(200).json(updatedStudent)
 })
 
-//@route DELETE /api/students/:id
+//@route DELETE /api/student/:id
 const deleteStudent = asyncHandler(async (req, res) => {
   const student = await Student.findById(req.params.id)
 
@@ -68,7 +77,7 @@ const deleteStudent = asyncHandler(async (req, res) => {
     throw new Error('Student not found')
   }
 
-  const teacher = await Teacher.findById(req.teacher.id)
+  const teacher = await User.findById(req.user.id)
 
   if(!teacher) {
     res.status(401)

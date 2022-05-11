@@ -27,7 +27,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   if (!name || !email || !password) {
     res.status(400);
-    throw new Error("Please Enter all the Feilds");
+    throw new Error("Please fill out all fields");
   }
 
   const userExists = await User.findOne({ email });
@@ -42,6 +42,7 @@ const registerUser = asyncHandler(async (req, res) => {
     email,
     password,
     pic,
+    isAdmin: true,
   });
 
   if (user) {
@@ -63,23 +64,75 @@ const registerUser = asyncHandler(async (req, res) => {
 //@route           POST /api/users/login
 //@access          Public
 const authUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
+  const { name, email, password, } = req.body;
 
-  const user = await User.findOne({ email });
+  if (email) {
+    const user = await User.findOne({ email });
 
-  if (user && (await user.matchPassword(password))) {
+    if (user && (await user.matchPassword(password))) {
+      res.json({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        isAdmin: user.isAdmin,
+        pic: user.pic,
+        token: generateToken(user._id),
+      });
+    } else {
+      res.status(401);
+      throw new Error("Invalid Email or Password");
+    }
+  } else {
+    const user = await User.findOne({ name });
+
     res.json({
       _id: user._id,
       name: user.name,
-      email: user.email,
       isAdmin: user.isAdmin,
-      pic: user.pic,
-      token: generateToken(user._id),
     });
-  } else {
-    res.status(401);
-    throw new Error("Invalid Email or Password");
   }
 });
 
-module.exports = { allUsers, registerUser, authUser };
+
+
+
+
+
+//@description     Register the student
+//@route           POST /api/user/student/
+//@access          Public
+const registerStudent = asyncHandler(async (req, res) => {
+  const { name } = req.body;
+
+  if (!name) {
+    res.status(400);
+    throw new Error("Please enter a name");
+  }
+
+  const userExists = await User.findOne({ name });
+
+  if (userExists) {
+    res.status(400);
+    throw new Error("Student already exists");
+  }
+
+  const user = await User.create({
+    name,
+    isAdmin: false
+  });
+
+  if (user) {
+    res.status(201).json({
+      _id: user._id,
+      name: user.name,
+      isAdmin: user.isAdmin,
+      pic: user.pic,
+    });
+  } else {
+    res.status(400);
+    throw new Error("User not found");
+  }
+});
+
+
+module.exports = { allUsers, registerUser, authUser, registerStudent};

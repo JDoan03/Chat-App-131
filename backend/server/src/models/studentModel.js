@@ -1,26 +1,13 @@
 const mongoose = require('mongoose')
+const User = require('./userModel')
 
 const studentSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        required: [true, 'Enter your username']
-    },
-    password: {
-        type: String,
-        required: "Enter your password"
-    },
-    firstName: {
-        type: String,
-       required: "Enter your first name"
-    },
-    lastName: {
-        type: String,
-        required: "Enter your last name"
-    },
+    firstName: { type: String, required: "Enter a first name"},
+    lastName: {type: String, required: "Enter a last name" },
     teacher: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'Teacher'
+       type: mongoose.Schema.Types.ObjectId,
+       required: true,
+       ref: User
     }
 })
 

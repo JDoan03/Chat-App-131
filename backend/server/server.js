@@ -7,38 +7,14 @@ const messageRoutes = require("./src/routes/messageRoutes");
 const { notFound, errorHandler } = require("./src/middleware/errorMiddleware");
 const path = require("path");
 
-/*const bodyParser = require('body-parser'); 
 
-const {errorHandler} = require('./src/middleware/errorMiddleware');
-const { addToGroup } = require("./src/controllers/chatControllers");
-
-connectDB()
-
-app.use(bodyParser.urlencoded({ extended: false}));
-app.use(bodyParser.json())
-
-app.use('/api/students', require('./src/routes/studentRoutes'))
-app.use('/api/teachers', require('./src/routes/teacherRoutes'))
-app.use('/api/chat', require('./src/routes/chatRoutes'))
-app.use('/api/user', require('./src/routes/userRoutes'))
-app.use('/api/message', require('./src/routes/messageRoutes'))
-
-app.use(errorHandler)
-
-app.listen(port, () => {
-
-    console.log(`Server is running on port: ${port}`);
-  }); */
 dotenv.config({ path: "./config.env" });
 connectDB();
 const app = express();
 
 app.use(express.json()); // to accept json data
 
-// app.get("/", (req, res) => {
-//   res.send("API Running!");
-// });
-
+app.use("/api/student", require("./src/routes/studentRoutes"));
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/message", messageRoutes);
