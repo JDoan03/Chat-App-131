@@ -51,13 +51,15 @@ const Login = () => {
         isClosable: true,
         position: "bottom",
       });
+
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
+
       history.push("/studentchats");
+
     } catch (error) {
       toast({
         title: "Error Occured!",
-        description: error.response.data.message,
         status: "error",
         duration: 5000,
         isClosable: true,
