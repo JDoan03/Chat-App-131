@@ -26,14 +26,13 @@ import { useToast } from "@chakra-ui/toast";
 import ChatLoading from "../ChatLoading";
 import { Spinner } from "@chakra-ui/spinner";
 import ProfileModal from "./ProfileModal";
-import StudentSignup from "./StudentSignup";
 import NotificationBadge from "react-notification-badge";
 import { Effect } from "react-notification-badge";
 import { getSender } from "../../config/ChatLogics";
 import UserListItem from "../userAvatar/UserListItem";
 import { ChatState } from "../../Context/ChatProvider";
 
-function SideDrawer() {
+function StudentSideDrawer() {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -181,9 +180,6 @@ function SideDrawer() {
               />
             </MenuButton>
             <MenuList>
-              <StudentSignup user={user}>
-                <MenuItem>Create new student</MenuItem>{" "}
-              </StudentSignup>
               <ProfileModal user={user}>
                 <MenuItem>My Profile</MenuItem>{" "}
               </ProfileModal>
@@ -227,4 +223,4 @@ function SideDrawer() {
   );
 }
 
-export default SideDrawer;
+export default StudentSideDrawer;
