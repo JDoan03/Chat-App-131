@@ -8,13 +8,11 @@ const { notFound, errorHandler } = require("./src/middleware/errorMiddleware");
 const path = require("path");
 
 
-dotenv.config({ path: "./config.env" });
 connectDB();
 const app = express();
 
 app.use(express.json()); // to accept json data
 
-app.use("/api/student", require("./src/routes/studentRoutes"));
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/message", messageRoutes);

@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useHistory } from "react-router";
+import StudentLogin from "../components/Authentication/StudentLogin";
 import Login from "../components/Authentication/Login";
 import Signup from "../components/Authentication/Signup";
 
@@ -39,17 +40,52 @@ function TeacherLogin() {
         </Text>
       </Box>
       <Box bg="darkgrey" w="100%" p={4} borderRadius="lg" borderWidth="1px">
-        <Tabs isFitted variant="enclosed">
+        <Tabs defaultIndex = {1} isFitted variant="enclosed">
           <TabList mb="1em">
-            <Tab>Login</Tab>
-            <Tab>Sign Up</Tab>
+            <Tab 
+              _selected={{ color: 'white', bg: 'blue.500' }}
+            >
+              Teacher
+            </Tab>
+            <Tab 
+              _selected={{ color: 'white', bg: 'blue.500' }}
+            >
+              Student
+            </Tab>
           </TabList>
+
           <TabPanels>
             <TabPanel>
+            <Tabs isFitted variant="enclosed">
+          <TabList mb="1em">
+            <Tab 
+              _selected={{ color: 'white', bg: 'blue.500' }}
+            >
+              Login
+            </Tab>
+            <Tab 
+              _selected={{ color: 'white', bg: 'blue.500' }}
+            >
+              Register
+            </Tab>
+          </TabList>
+
+          <TabPanels>
+            <TabPanel>
+
               <Login />
+              
             </TabPanel>
             <TabPanel>
               <Signup />
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
+
+              
+            </TabPanel>
+            <TabPanel>
+              <StudentLogin />
             </TabPanel>
           </TabPanels>
         </Tabs>
