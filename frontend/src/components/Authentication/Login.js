@@ -61,6 +61,8 @@ const Login = () => {
       history.push("/chats");
 
     } catch (error) {
+      setLoading(true);
+      /*
       toast({
         title: "Error Occured!",
         description: error.response.data.message,
@@ -69,7 +71,7 @@ const Login = () => {
         isClosable: true,
         position: "bottom",
       });
-      setLoading(false);
+      */
     }
   };
 
