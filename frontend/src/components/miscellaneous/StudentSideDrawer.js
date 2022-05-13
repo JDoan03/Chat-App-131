@@ -133,14 +133,6 @@ function StudentSideDrawer() {
         p="5px 10px 5px 10px"
         borderWidth="5px"
       >
-        <Tooltip label="Search Users to chat" hasArrow placement="bottom-end">
-          <Button variant="ghost" onClick={onOpen}>
-            <i className="fas fa-search"></i>
-            <Text d={{ base: "none", md: "flex" }} px={4}>
-              Search Student
-            </Text>
-          </Button>
-        </Tooltip>
         <Text fontSize="2xl" fontFamily="Work sans">
           ALT-F4's Chat App
         </Text>
