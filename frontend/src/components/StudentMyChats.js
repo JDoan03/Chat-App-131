@@ -54,18 +54,6 @@ const StudentMyChats = ({ fetchAgain }) => {
       borderWidth="1px"
     >
       <Box
-        pb={3}
-        px={3}
-        fontSize={{ base: "28px", md: "30px" }}
-        fontFamily="Work sans"
-        d="flex"
-        w="100%"
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        My Chats
-      </Box>
-      <Box
         d="flex"
         flexDir="column"
         p={3}
