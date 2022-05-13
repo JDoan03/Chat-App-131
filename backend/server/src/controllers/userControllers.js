@@ -89,6 +89,7 @@ const authUser = asyncHandler(async (req, res) => {
       _id: user._id,
       name: user.name,
       isAdmin: user.isAdmin,
+      token: generateToken(user._id),
     });
   }
 });
@@ -127,6 +128,7 @@ const registerStudent = asyncHandler(async (req, res) => {
       name: user.name,
       isAdmin: user.isAdmin,
       pic: user.pic,
+      token: generateToken(user._id),
     });
   } else {
     res.status(400);
