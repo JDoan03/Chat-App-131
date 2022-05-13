@@ -85,7 +85,7 @@ const MyChats = ({ fetchAgain }) => {
         bg="#F8F8F8"
         w="100%"
         h="100%"
-        borderRadius="lg"
+        borderRadius="lightgrey"
         overflowY="hidden"
       >
         {chats ? (
@@ -98,7 +98,7 @@ const MyChats = ({ fetchAgain }) => {
                 color={selectedChat === chat ? "white" : "black"}
                 px={3}
                 py={2}
-                borderRadius="lg"
+                borderRadius="lightgrey"
                 key={chat._id}
               >
                 <Text>
