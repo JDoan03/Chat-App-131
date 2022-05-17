@@ -160,9 +160,7 @@ function SideDrawer() {
               <StudentSignup user={user}>
                 <MenuItem>Create New Student</MenuItem>{" "}
               </StudentSignup>
-              <ProfileModal user={user}>
-                <MenuItem>My Profile</MenuItem>{" "}
-              </ProfileModal>
+
               <MenuDivider />
               <MenuItem onClick={logoutHandler}>Logout</MenuItem>
             </MenuList>
