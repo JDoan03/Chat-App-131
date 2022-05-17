@@ -6,8 +6,11 @@
 - Chat App Name
 - May 17, 2022
 ## Overview
+We are building a chat app to allow students to communicate with their teacher. The teacher wants to restrict certain student’s capabilities within the app to ensure the app is for school purposes. We have been requested by our client to a chat application that is better fitted for her needs.
 ## Purpose
+The current chat application platform that our client uses are not user friendly and/or have their limitations on what they are capabable of. Our teacher wants a single page application to enable teacher to student real-time messaging during remote instruction.
 ## Customer/Client
+Our client is a fifth grade teacher that currently uses other chat platforms to assist during remote instruction.
 ## Feature Summary (list and describe each feature)
 ## Issue Summary (list and describe all issues)
 ## Installation
