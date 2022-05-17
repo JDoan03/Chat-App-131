@@ -138,20 +138,20 @@ const GroupChatModal = ({ children }) => {
             d="flex"
             justifyContent="center"
           >
-            Create Student Chat
+            Create Breakout Room
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody d="flex" flexDir="column" alignItems="center">
             <FormControl>
               <Input
-                placeholder="Chat Name"
+                placeholder="Breakout Room Name"
                 mb={3}
                 onChange={(e) => setGroupChatName(e.target.value)}
               />
             </FormControl>
             <FormControl>
               <Input
-                placeholder="Add Students eg: Jackson, Joseph, Jason, Niketa, Miguel, Dat"
+                placeholder="Search Students"
                 mb={1}
                 onChange={(e) => handleSearch(e.target.value)}
               />

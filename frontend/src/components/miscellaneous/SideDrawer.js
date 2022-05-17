@@ -26,6 +26,7 @@ import { useToast } from "@chakra-ui/toast";
 import ChatLoading from "../ChatLoading";
 import { Spinner } from "@chakra-ui/spinner";
 import ProfileModal from "./ProfileModal";
+import GroupChatModal from "./GroupChatModal";
 import StudentSignup from "./StudentSignup";
 import NotificationBadge from "react-notification-badge";
 import { Effect } from "react-notification-badge";
@@ -33,8 +34,10 @@ import { getSender } from "../../config/ChatLogics";
 import UserListItem from "../userAvatar/UserListItem";
 import { ChatState } from "../../Context/ChatProvider";
 
+import { AddIcon } from "@chakra-ui/icons";
+
+
 function SideDrawer() {
-  const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingChat, setLoadingChat] = useState(false);
@@ -57,18 +60,12 @@ function SideDrawer() {
     history.push("/");
   };
 
-  const handleSearch = async () => {
-    if (!search) {
-      toast({
-        title: "Please Enter something in search",
-        status: "warning",
-        duration: 5000,
-        isClosable: true,
-        position: "top-left",
-      });
-      return;
-    }
+  const wrapperFunction = async () => {
+    handleSearch();
+    onOpen();
+  }
 
+  const handleSearch = async () => {
     try {
       setLoading(true);
 
@@ -78,7 +75,7 @@ function SideDrawer() {
         },
       };
 
-      const { data } = await axios.get(`/api/user?search=${search}`, config);
+      const { data } = await axios.get(`/api/user`, config);
 
       setLoading(false);
       setSearchResult(data);
@@ -134,11 +131,11 @@ function SideDrawer() {
         p="5px 10px 5px 10px"
         borderWidth="5px"
       >
-        <Tooltip label="Search Users to chat" hasArrow placement="bottom-end">
-          <Button variant="ghost" onClick={onOpen}>
-            <i className="fas fa-search"></i>
+        <Tooltip label="Click on a student to start chatting!" hasArrow placement="bottom-end">
+          <Button variant="ghost" onClick={wrapperFunction}>
+            
             <Text d={{ base: "none", md: "flex" }} px={4}>
-              Search Student
+              All Students
             </Text>
           </Button>
         </Tooltip>
@@ -181,8 +178,11 @@ function SideDrawer() {
               />
             </MenuButton>
             <MenuList>
+            <GroupChatModal>
+            <MenuItem>New Breakout Room</MenuItem>{" "}
+        </GroupChatModal>
               <StudentSignup user={user}>
-                <MenuItem>Create new student</MenuItem>{" "}
+                <MenuItem>Create New Student</MenuItem>{" "}
               </StudentSignup>
               <ProfileModal user={user}>
                 <MenuItem>My Profile</MenuItem>{" "}
@@ -197,24 +197,17 @@ function SideDrawer() {
       <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerHeader borderBottomWidth="1px">Search Students</DrawerHeader>
+          <DrawerHeader borderBottomWidth="1px">All Students</DrawerHeader>
           <DrawerBody>
             <Box d="flex" pb={2}>
-              <Input
-                placeholder="Search by name"
-                mr={2}
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-              <Button onClick={handleSearch}>Go</Button>
             </Box>
             {loading ? (
               <ChatLoading />
             ) : (
               searchResult?.map((user) => (
                 <UserListItem
-                  key={user._id}
-                  user={user}
+                  key={user.name}
+                  user={user}                  
                   handleFunction={() => accessChat(user._id)}
                 />
               ))

@@ -1,5 +1,6 @@
 import { Avatar } from "@chakra-ui/avatar";
 import { Box, Text } from "@chakra-ui/layout";
+import { Badge } from '@chakra-ui/react'
 import { user, ChatState } from "../../Context/ChatProvider";
 
 const UserListItem = ({ user, handleFunction }) => {
@@ -24,7 +25,9 @@ const UserListItem = ({ user, handleFunction }) => {
       borderRadius="lg"
     >
       <Box>
-        <Text>{user.name}</Text>
+        <Text>
+          {user.name}
+        </Text>
       </Box>
     </Box>
   );

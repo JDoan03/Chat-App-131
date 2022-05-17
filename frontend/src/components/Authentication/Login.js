@@ -62,16 +62,6 @@ const Login = () => {
 
     } catch (error) {
       setLoading(true);
-      /*
-      toast({
-        title: "Error Occured!",
-        description: error.response.data.message,
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
-      });
-      */
     }
   };
 
@@ -93,7 +83,7 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type={show ? "text" : "password"}
-            //placeholder="Enter password"
+
           />
           <InputRightElement width="4.5rem">
             <Button h="1.75rem" size="sm" onClick={handleClick}>

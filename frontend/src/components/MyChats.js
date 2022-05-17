@@ -66,17 +66,7 @@ const MyChats = ({ fetchAgain }) => {
         justifyContent="space-between"
         alignItems="center"
       >
-        My Chats
-        <GroupChatModal>
-          <Button
-            colorScheme="blue"
-            d="flex"
-            fontSize={{ base: "17px", md: "10px", lg: "17px" }}
-            rightIcon={<AddIcon />}
-          >
-            New Student Chat
-          </Button>
-        </GroupChatModal>
+       My Chats
       </Box>
       <Box
         d="flex"
