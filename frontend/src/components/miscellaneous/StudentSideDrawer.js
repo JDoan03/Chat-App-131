@@ -147,7 +147,6 @@ function StudentSideDrawer() {
               />
             </MenuButton>
             <MenuList>
-              <MenuDivider />
               <MenuItem onClick={logoutHandler}>Logout</MenuItem>
             </MenuList>
           </Menu>
