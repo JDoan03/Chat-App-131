@@ -37,7 +37,8 @@ Our client is a fifth grade teacher that currently uses other chat platforms to 
 ## Installation
 1. You can start installation by typing into your command prompt `git clone https://github.com/JDoan03/Chat-App-131.git`
 2. You will now want to change directory into the file and type `npm install concurrently react-scripts`
-3. Now you can run the application by tpying `npm run dev`
+3. You must then type `npm install` in frontend and backend/server to install all dependencies
+4. Now you can run the application by tpying `npm run dev`
 ## Resources
 - Chakara UI Website `https://chakra-ui.com/`
 - MERN Stack Explained `https://www.mongodb.com/mern-stack`
