@@ -2,7 +2,8 @@
   "scripts": {
     "app": " npm start --prefix frontend",
     "start": "nodemon backend/server/server.js",
-    "dev": "concurrently \"npm run app\" \"npm run start\""
+    "dev": "concurrently \"npm run app\" \"npm run start\"",
+    "postinstall": "(npm install) && (cd frontend && npm install) && (cd backend && npm install)"
   },
   "dependencies": {
     "concurrently": "^7.1.0",
